@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/fragmentNaruto">
+
+    <!--fragment naruto-->
+    <fragment
+        android:id="@+id/fragmentNaruto"
+        android:label="@string/listview_label"
+        android:name="com.androidkotlinbase.menu.list.views.ListFragment"
+        tools:layout="@layout/fragment_list">
+    </fragment>
+
+    <!--fragment bleach-->
+    <fragment
+        android:id="@+id/fragmentBleach"
+        android:label="@string/galleryview_label"
+        android:name="com.androidkotlinbase.menu.gallery.views.GalleryFragment"
+        tools:layout="@layout/fragment_gallery">
+    </fragment>
+
+</navigation>

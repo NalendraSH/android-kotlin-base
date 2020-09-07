@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/fragmentNaruto"
+          android:icon="@drawable/ic_naruto"
+          android:title="@string/listview_label"/>
+
+    <item android:id="@+id/fragmentBleach"
+          android:icon="@drawable/ic_bleach"
+          android:title="@string/galleryview_label"/>
+
+</menu>

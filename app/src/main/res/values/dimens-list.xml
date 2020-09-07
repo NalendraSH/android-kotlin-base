@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_image_view_width_size">@dimen/_85sdp</dimen>
+    <dimen name="item_image_view_height_size">@dimen/_100sdp</dimen>
+    <dimen name="item_margin">@dimen/_8sdp</dimen>
+    <dimen name="item_text_view_title_size">@dimen/_16ssp</dimen>
+    <dimen name="item_text_view_desc_size">@dimen/_12ssp</dimen>
+</resources>

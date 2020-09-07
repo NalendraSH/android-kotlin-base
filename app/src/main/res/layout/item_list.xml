@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="narutoList"
+            type="com.androidkotlinbase.menu.list.viewmodels.ItemListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewItemNaruto"
+            android:layout_width="@dimen/item_image_view_width_size"
+            android:layout_height="@dimen/item_image_view_height_size"
+            android:layout_margin="@dimen/item_margin"
+            android:scaleType="centerCrop"
+            setImageUrl="@{narutoList.image_url}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textViewItemNarutoTitle"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewItemNarutoTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            android:text="@{narutoList.title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/item_text_view_title_size"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewItemNaruto"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewItemNarutoScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginStart="@dimen/item_margin"
+            android:text="@{`Score: `+narutoList.score.toString()}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/item_text_view_desc_size"
+            app:layout_constraintTop_toBottomOf="@id/textViewItemNarutoTitle"
+            app:layout_constraintStart_toEndOf="@id/imageViewItemNaruto"
+            tools:text="@tools:sample/lorem"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewItemNarutoDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            android:text="@{narutoList.synopsis}"
+            android:textSize="@dimen/item_text_view_desc_size"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/textViewItemNarutoScore"
+            app:layout_constraintStart_toEndOf="@id/imageViewItemNaruto"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem/random"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

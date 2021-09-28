@@ -8,11 +8,12 @@ import com.androidkotlinbase.menu.list.models.Models
 import com.androidkotlinbase.networks.repositories.ListRepository
 import com.androidkotlinbase.utils.LoadingState
 import kotlinx.coroutines.CoroutineScope
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 
-class ListDataSource(coroutineScope: CoroutineScope): PageKeyedDataSource<Int, Models.Results>(), KoinComponent {
+class ListDataSource(coroutineScope: CoroutineScope): PageKeyedDataSource<Int, Models.Results>(),
+    KoinComponent {
 
     private val repository: ListRepository by inject{ parametersOf(coroutineScope) }
 

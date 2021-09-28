@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Created by nalen on 07/09/20.
@@ -20,7 +20,7 @@ object Models {
         class Deserializer: ResponseDeserializable<Response> {
             override fun deserialize(content: String): Response? {
                 val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-                val jsonAdapter = moshi.adapter<Response>(Response::class.java)
+                val jsonAdapter = moshi.adapter(Response::class.java)
                 return jsonAdapter.fromJson(content)
             }
         }

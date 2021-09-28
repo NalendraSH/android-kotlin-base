@@ -14,12 +14,12 @@ import com.androidkotlinbase.databinding.FragmentGalleryBinding
 import com.androidkotlinbase.menu.gallery.adapters.GalleryAdapter
 import com.androidkotlinbase.menu.gallery.viewmodels.FragmentGalleryViewModel
 import com.androidkotlinbase.menu.list.models.Models
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class GalleryFragment : Fragment() {
 
     private lateinit var binding: FragmentGalleryBinding
-    private val viewModel by viewModel<FragmentGalleryViewModel>()
+    private val viewModel by inject<FragmentGalleryViewModel>()
 
     private lateinit var adapter: GalleryAdapter
 

@@ -13,12 +13,12 @@ import com.androidkotlinbase.R
 import com.androidkotlinbase.databinding.FragmentListBinding
 import com.androidkotlinbase.menu.list.adapters.ListAdapter
 import com.androidkotlinbase.menu.list.viewmodels.FragmentListViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
-    private val viewModel by viewModel<FragmentListViewModel> ()
+    private val viewModel by inject<FragmentListViewModel> ()
 
     private lateinit var adapter: ListAdapter
 

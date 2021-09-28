@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.androidkotlinbase.menu.list.models.Models
 import com.androidkotlinbase.networks.repositories.GalleryRepository
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class FragmentGalleryViewModel : ViewModel(), KoinComponent{
 

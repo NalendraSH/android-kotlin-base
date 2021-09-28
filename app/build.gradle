@@ -1,17 +1,18 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id "androidx.navigation.safeargs"
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.1"
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.androidkotlinbase"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdk 21
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -44,8 +45,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -55,43 +56,42 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    implementation "org.koin:koin-android:$koinVersion"
-    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
-    implementation "com.github.kittinunf.fuel:fuel:$fuelVersion"
-    implementation "com.github.kittinunf.fuel:fuel-coroutines:$fuelVersion"
-    implementation "com.github.kittinunf.fuel:fuel-moshi:$fuelVersion"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+//    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    implementation "android.arch.persistence.room:runtime:$roomVersion"
-    kapt "android.arch.persistence.room:compiler:$roomVersion"
-    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "com.github.kittinunf.fuel:fuel:$fuel_version"
+    implementation "com.github.kittinunf.fuel:fuel-coroutines:$fuel_version"
+    implementation "com.github.kittinunf.fuel:fuel-moshi:$fuel_version"
+    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+//    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 //    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
 //    kapt "androidx.lifecyle:lifecycle-common-java8:$lifecycleVersion"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$httpLoggingVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
 
-    implementation("io.coil-kt:coil:$coilVersion")
+    implementation("io.coil-kt:coil:$coil_version")
 
-    implementation "com.intuit.ssp:ssp-android:$sspVersion"
-    implementation "com.intuit.sdp:sdp-android:$sdpVersion"
+    implementation "com.intuit.ssp:ssp-android:$sdp_ssp_version"
+    implementation "com.intuit.sdp:sdp-android:$sdp_ssp_version"
 
-    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
 }

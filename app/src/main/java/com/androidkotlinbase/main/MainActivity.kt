@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -20,15 +19,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.main = viewModel
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupToolbar()
         setupNavigation()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return Navigation.findNavController(this, R.id.fragmentContainer).navigateUp()
+        return Navigation.findNavController(this, R.id.fragment_container).navigateUp()
     }
 
     private fun setupToolbar() {
@@ -36,17 +35,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation(){
-        binding.bottomNavigationViewMain.itemIconTintList = null
-        val navController = Navigation.findNavController(this, R.id.fragmentContainer)
+        binding.bottomnavigationMain.itemIconTintList = null
+        val navController = Navigation.findNavController(this, R.id.fragment_container)
         setupActionBarWithNavController(navController)
-        NavigationUI.setupWithNavController(binding.bottomNavigationViewMain, navController)
+        NavigationUI.setupWithNavController(binding.bottomnavigationMain, navController)
     }
 
     fun hideNavigation(value: Boolean) {
         if (value) {
-            binding.bottomNavigationViewMain.visibility = View.GONE
+            binding.bottomnavigationMain.visibility = View.GONE
         } else {
-            binding.bottomNavigationViewMain.visibility = View.VISIBLE
+            binding.bottomnavigationMain.visibility = View.VISIBLE
         }
     }
 }

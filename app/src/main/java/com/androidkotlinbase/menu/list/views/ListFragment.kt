@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.androidkotlinbase.R
 import com.androidkotlinbase.databinding.FragmentListBinding
 import com.androidkotlinbase.menu.list.adapters.ListAdapter
 import com.androidkotlinbase.menu.list.viewmodels.FragmentListViewModel
@@ -22,15 +19,13 @@ class ListFragment : Fragment() {
 
     private lateinit var adapter: ListAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.naruto = viewModel
-
         setupSwipeRefresh()
         setupRecyclerView()
         observeLiveData()
@@ -42,22 +37,22 @@ class ListFragment : Fragment() {
     }
 
     private fun observeLiveData() {
-        viewModel.narutoList.observe(viewLifecycleOwner, Observer {
+        viewModel.narutoList.observe(viewLifecycleOwner, {
             adapter.submitList(it)
         })
-        viewModel.getLoadingState().observe(viewLifecycleOwner, Observer {
+        viewModel.getLoadingState().observe(viewLifecycleOwner, {
         })
     }
 
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(context)
-        binding.recyclerViewNaruto.layoutManager = layoutManager
+        binding.rvNaruto.layoutManager = layoutManager
         adapter = ListAdapter()
-        binding.recyclerViewNaruto.adapter = adapter
+        binding.rvNaruto.adapter = adapter
     }
 
     private fun setupSwipeRefresh() {
-        binding.swipeRefreshNaruto.setOnRefreshListener {
+        binding.swipeNaruto.setOnRefreshListener {
             viewModel.refreshListNaruto()
         }
     }

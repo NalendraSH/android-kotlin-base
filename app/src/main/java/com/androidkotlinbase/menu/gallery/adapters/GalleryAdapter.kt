@@ -2,14 +2,12 @@ package com.androidkotlinbase.menu.gallery.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.androidkotlinbase.R
 import com.androidkotlinbase.databinding.ItemGalleryBinding
-import com.androidkotlinbase.menu.gallery.viewmodels.ItemGalleryViewModel
 import com.androidkotlinbase.menu.list.models.Models
 import com.androidkotlinbase.utils.AdapterCallback
+import com.androidkotlinbase.utils.setImageUrl
 
 /**
  * Created by nalen on 07/09/20.
@@ -18,7 +16,7 @@ class GalleryAdapter: ListAdapter<Models.Results, GalleryAdapter.GalleryViewHold
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ItemGalleryBinding = DataBindingUtil.inflate(inflater, R.layout.item_gallery, parent, false)
+        val binding = ItemGalleryBinding.inflate(inflater, parent, false)
         return GalleryViewHolder(binding)
     }
 
@@ -29,8 +27,7 @@ class GalleryAdapter: ListAdapter<Models.Results, GalleryAdapter.GalleryViewHold
 
     class GalleryViewHolder(private val binding: ItemGalleryBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(bleachModel: Models.Results) {
-            binding.bleachList = ItemGalleryViewModel(bleachModel)
-            binding.executePendingBindings()
+            binding.ivItemGallery.setImageUrl(bleachModel.image_url)
         }
     }
 }

@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="bleachList"
-            type="com.androidkotlinbase.menu.gallery.viewmodels.ItemGalleryViewModel" />
-    </data>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="@dimen/item_image_view_width_size"
-        android:layout_height="@dimen/item_image_view_height_size"
-        android:scaleType="centerCrop"
-        setImageUrl="@{bleachList.image_url}"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"/>
-
-</layout>
+<androidx.appcompat.widget.AppCompatImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iv_item_gallery"
+    android:layout_width="@dimen/item_image_view_width_size"
+    android:layout_height="@dimen/item_image_view_height_size"
+    android:scaleType="centerCrop"
+    tools:srcCompat="@tools:sample/backgrounds/scenic"/>

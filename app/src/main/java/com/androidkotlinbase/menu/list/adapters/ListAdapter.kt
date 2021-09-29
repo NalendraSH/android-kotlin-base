@@ -3,15 +3,14 @@ package com.androidkotlinbase.menu.list.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.androidkotlinbase.R
 import com.androidkotlinbase.databinding.ItemListBinding
 import com.androidkotlinbase.menu.list.models.Models
-import com.androidkotlinbase.menu.list.viewmodels.ItemListViewModel
 import com.androidkotlinbase.utils.AdapterCallback
 import com.androidkotlinbase.utils.LoadingState
+import com.androidkotlinbase.utils.setImageUrl
 
 class ListAdapter : PagedListAdapter<Models.Results, RecyclerView.ViewHolder>(AdapterCallback.DiffListCallback) {
 
@@ -28,11 +27,11 @@ class ListAdapter : PagedListAdapter<Models.Results, RecyclerView.ViewHolder>(Ad
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        if (viewType == VIEW_TYPE_ITEM) {
-            val binding: ItemListBinding = DataBindingUtil.inflate(inflater, R.layout.item_list, parent, false)
-            return NarutoViewHolder(binding)
+        return if (viewType == VIEW_TYPE_ITEM) {
+            val binding = ItemListBinding.inflate(inflater, parent, false)
+            NarutoViewHolder(binding)
         }else {
-            return LoadMoreViewHolder(inflater.inflate(R.layout.item_load_more, parent, false))
+            LoadMoreViewHolder(inflater.inflate(R.layout.item_load_more, parent, false))
         }
     }
 
@@ -53,8 +52,10 @@ class ListAdapter : PagedListAdapter<Models.Results, RecyclerView.ViewHolder>(Ad
 
     class NarutoViewHolder(private val binding: ItemListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(narutoModel: Models.Results) {
-            binding.narutoList = ItemListViewModel(narutoModel)
-            binding.executePendingBindings()
+            binding.ivItemNaruto.setImageUrl(narutoModel.image_url)
+            binding.tvItemNarutoTitle.text = narutoModel.title
+            binding.tvItemNarutoScore.text = "Score: ${narutoModel.score}"
+            binding.tvItemNarutoDesc.text = narutoModel.synopsis
         }
     }
 

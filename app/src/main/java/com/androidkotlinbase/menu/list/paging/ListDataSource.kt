@@ -2,7 +2,8 @@ package com.androidkotlinbase.menu.list.paging
 
 import android.os.SystemClock
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PageKeyedDataSource
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.androidkotlinbase.data.Constant
 import com.androidkotlinbase.menu.list.models.Models
 import com.androidkotlinbase.networks.repositories.ListRepository
@@ -12,40 +13,39 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 
-class ListDataSource(coroutineScope: CoroutineScope): PageKeyedDataSource<Int, Models.Results>(),
+class ListDataSource(coroutineScope: CoroutineScope): PagingSource<Int, Models.Results>(),
     KoinComponent {
 
     private val repository: ListRepository by inject{ parametersOf(coroutineScope) }
 
     var state: MutableLiveData<LoadingState> = MutableLiveData()
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Models.Results>) {
-        updateState(LoadingState.LOADING)
-        repository.getList({
-            updateState(LoadingState.DONE)
-            callback.onResult(it.results, 0, 20)
-        }, {
-            updateState(LoadingState.DONE)
-            it.printStackTrace()
-        })
+    private fun updateState(loadingState: LoadingState) {
+        state.postValue(loadingState)
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Models.Results>) {
+    override fun getRefreshKey(state: PagingState<Int, Models.Results>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Models.Results> {
+        val result: MutableList<Models.Results> = mutableListOf()
+        val nextPageNumber = params.key ?: 1
+
         updateState(LoadingState.LOADING)
         repository.getList({
             updateState(LoadingState.DONE)
-            callback.onResult(it.results, params.key+20)
+            result.clear()
+            result.addAll(it.results)
         }, {
             SystemClock.sleep(Constant.DUMMY_LOAD_MORE_TIME)
             updateState(LoadingState.DONE)
             it.printStackTrace()
         })
-    }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Models.Results>) {
-    }
-
-    private fun updateState(loadingState: LoadingState) {
-        state.postValue(loadingState)
+        return LoadResult.Page(result, null, nextPageNumber+20)
     }
 }

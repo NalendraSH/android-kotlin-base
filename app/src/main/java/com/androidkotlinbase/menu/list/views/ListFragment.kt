@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidkotlinbase.databinding.FragmentListBinding
 import com.androidkotlinbase.menu.list.adapters.ListAdapter
 import com.androidkotlinbase.menu.list.viewmodels.FragmentListViewModel
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class ListFragment : Fragment() {
@@ -38,9 +40,9 @@ class ListFragment : Fragment() {
 
     private fun observeLiveData() {
         viewModel.narutoList.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
-        })
-        viewModel.getLoadingState().observe(viewLifecycleOwner, {
+            lifecycleScope.launch {
+                adapter.submitData(it)
+            }
         })
     }
 
@@ -53,7 +55,7 @@ class ListFragment : Fragment() {
 
     private fun setupSwipeRefresh() {
         binding.swipeNaruto.setOnRefreshListener {
-            viewModel.refreshListNaruto()
+            adapter.refresh()
         }
     }
 

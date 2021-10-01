@@ -3,7 +3,7 @@ package com.androidkotlinbase.menu.list.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.androidkotlinbase.R
 import com.androidkotlinbase.databinding.ItemListBinding
@@ -12,7 +12,7 @@ import com.androidkotlinbase.utils.AdapterCallback
 import com.androidkotlinbase.utils.LoadingState
 import com.androidkotlinbase.utils.setImageUrl
 
-class ListAdapter : PagedListAdapter<Models.Results, RecyclerView.ViewHolder>(AdapterCallback.DiffListCallback) {
+class ListAdapter : PagingDataAdapter<Models.Results, RecyclerView.ViewHolder>(AdapterCallback.DiffListCallback) {
 
     companion object {
         const val VIEW_TYPE_ITEM = 1
@@ -37,7 +37,7 @@ class ListAdapter : PagedListAdapter<Models.Results, RecyclerView.ViewHolder>(Ad
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is NarutoViewHolder) {
-            val narutoModel = getItem(holder.adapterPosition)
+            val narutoModel = getItem(holder.bindingAdapterPosition)
             narutoModel?.let { holder.bindData(it) }
         }
     }

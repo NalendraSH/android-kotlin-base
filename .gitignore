@@ -1,0 +1,20 @@
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+# Android
+/.idea
+.idea/
+*/.idea/deploymentTargetDropDown.xml
+.idea/gradle.xml
+.idea/misc.xml
+.gradle
+build.gradle.kts
+build/
+*.apk
+*.aab
+/captures
+.externalNativeBuild
+.cxx
+local.properties

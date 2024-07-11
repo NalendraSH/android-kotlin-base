@@ -52,9 +52,9 @@ class ListAdapter : PagingDataAdapter<Models.Results, RecyclerView.ViewHolder>(A
 
     class NarutoViewHolder(private val binding: ItemListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(narutoModel: Models.Results) {
-            binding.ivItemNaruto.setImageUrl(narutoModel.image_url)
+            binding.ivItemNaruto.setImageUrl(narutoModel.images.webp.image_url)
             binding.tvItemNarutoTitle.text = narutoModel.title
-            binding.tvItemNarutoScore.text = "Score: ${narutoModel.score}"
+            binding.tvItemNarutoScore.text = "Score: ${narutoModel.score ?: 0.0}"
             binding.tvItemNarutoDesc.text = narutoModel.synopsis
         }
     }

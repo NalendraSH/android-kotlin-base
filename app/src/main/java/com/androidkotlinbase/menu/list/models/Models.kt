@@ -16,7 +16,7 @@ import kotlinx.parcelize.Parcelize
 object Models {
     @Keep
     @Parcelize
-    data class Response(val results: MutableList<Results>): Parcelable {
+    data class Response(val data: MutableList<Results>): Parcelable {
         class Deserializer: ResponseDeserializable<Response> {
             override fun deserialize(content: String): Response? {
                 val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
@@ -30,11 +30,26 @@ object Models {
     @Parcelize
     data class Results(
         val mal_id: Int,
-        val url: String,
+        val url: String? = "",
+        val images: Images,
+        val title: String? = "",
+        val synopsis: String? = "",
+        val score: Double? = 0.0
+    ): Parcelable
+
+    @Keep
+    @Parcelize
+    data class Images(
+        val jpg: Image,
+        val webp: Image
+    ): Parcelable
+
+    @Keep
+    @Parcelize
+    data class Image(
         val image_url: String,
-        val title: String,
-        val synopsis: String,
-        val score: Float
+        val small_image_url: String,
+        val large_image_url: String
     ): Parcelable
 
     @Keep
@@ -42,10 +57,10 @@ object Models {
     @Entity(tableName = "content")
     data class Content(
         @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id")val id: Int,
-        @ColumnInfo(name = "url")val url: String,
-        @ColumnInfo(name = "img_url")val image_url: String,
-        @ColumnInfo(name = "title")val title: String,
-        @ColumnInfo(name = "synopsis")val synopsis: String,
-        @ColumnInfo(name = "score")val score: Float
+        @ColumnInfo(name = "url")val url: String? = "",
+        @ColumnInfo(name = "img_url")val image_url: String? = "",
+        @ColumnInfo(name = "title")val title: String? = "",
+        @ColumnInfo(name = "synopsis")val synopsis: String? = "",
+        @ColumnInfo(name = "score")val score: Double? = 0.0
     ): Parcelable
 }

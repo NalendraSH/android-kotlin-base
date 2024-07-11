@@ -41,9 +41,9 @@ class GalleryFragment : Fragment() {
             binding.swipeBleach.isRefreshing = it
         })
         viewModel.liveDataList.observe(viewLifecycleOwner, {
-            adapter.submitList(it.results)
-            for (result in it.results) {
-                val res = Models.Content(result.mal_id, result.url, result.image_url, result.title, result.synopsis, result.score)
+            adapter.submitList(it.data)
+            for (result in it.data) {
+                val res = Models.Content(result.mal_id, result.url, result.images.webp.image_url, result.title, result.synopsis, result.score)
                 viewModel.submitLocalBleach(res)
             }
         })

@@ -39,7 +39,7 @@ class ListDataSource(coroutineScope: CoroutineScope): PagingSource<Int, Models.R
         repository.getList({
             updateState(LoadingState.DONE)
             result.clear()
-            result.addAll(it.results)
+            result.addAll(it.data)
         }, {
             SystemClock.sleep(Constant.DUMMY_LOAD_MORE_TIME)
             updateState(LoadingState.DONE)

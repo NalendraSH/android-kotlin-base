@@ -5,6 +5,7 @@ import com.androidkotlinbase.di.modules.appModule
 import com.androidkotlinbase.di.modules.galleryModule
 import com.androidkotlinbase.di.modules.listModule
 import com.github.kittinunf.fuel.core.FuelManager
+import com.github.kittinunf.fuel.core.interceptors.LogRequestInterceptor
 import com.github.kittinunf.fuel.core.interceptors.LogResponseInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -26,6 +27,7 @@ class App: Application() {
         val fuelManager = FuelManager.instance
         fuelManager.basePath = BuildConfig.BASE_URL
         if (BuildConfig.DEBUG) {
+            fuelManager.addRequestInterceptor { LogRequestInterceptor(it) }
             fuelManager.addResponseInterceptor { LogResponseInterceptor(it) }
         }
     }

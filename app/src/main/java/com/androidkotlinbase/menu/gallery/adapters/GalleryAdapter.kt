@@ -27,7 +27,7 @@ class GalleryAdapter: ListAdapter<Models.Results, GalleryAdapter.GalleryViewHold
 
     class GalleryViewHolder(private val binding: ItemGalleryBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(bleachModel: Models.Results) {
-            binding.ivItemGallery.setImageUrl(bleachModel.image_url)
+            binding.ivItemGallery.setImageUrl(bleachModel.images.webp.image_url)
         }
     }
 }

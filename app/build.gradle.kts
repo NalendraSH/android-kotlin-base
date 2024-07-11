@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace = "com.androidkotlinbase"
-    compileSdk = 33
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "com.androidkotlinbase"
-        minSdk = 21
-        targetSdk = 33
+        minSdk = libs.versions.compileSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -74,19 +74,19 @@ dependencies {
     implementation(libs.koin)
     implementation(libs.koin.scope)
     implementation(libs.koin.viewmodel)
-    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
-    implementation("com.github.kittinunf.fuel:fuel-coroutines:2.3.1")
-    implementation("com.github.kittinunf.fuel:fuel-moshi:2.3.1")
-    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation(libs.fuel)
+    implementation(libs.fuel.coroutines)
+    implementation(libs.fuel.moshi)
+    implementation(libs.moshi)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp.logging.interceptor)
-    implementation("io.coil-kt:coil:0.7.0")
+    implementation(libs.coil)
     implementation(libs.sdp)
     implementation(libs.ssp)
 
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

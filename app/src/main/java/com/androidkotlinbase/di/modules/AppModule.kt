@@ -13,7 +13,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    factory { ListRepository(get()) }
+    factory { ListRepository() }
     factory { GalleryRepository() }
     factory { com.androidkotlinbase.local.repositories.GalleryRepository(androidApplication()) }
 

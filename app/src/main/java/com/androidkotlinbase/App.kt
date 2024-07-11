@@ -32,9 +32,6 @@ class App: Application() {
 
     private fun setupKoin() {
         startKoin {
-            if (BuildConfig.DEBUG) {
-                androidLogger(Level.DEBUG)
-            }
             androidContext(this@App)
             modules(listOf(appModule, listModule, galleryModule))
         }

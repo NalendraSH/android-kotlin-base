@@ -8,7 +8,7 @@ import com.github.kittinunf.fuel.coroutines.awaitObjectResponseResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 
-class ListRepository(private val coroutineScope: CoroutineScope){
+class ListRepository {
 
     fun getList(onSuccess: (Models.Response) -> Unit, onError: (FuelError) -> Unit){
         runBlocking {

@@ -13,12 +13,11 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 
-class ListDataSource(coroutineScope: CoroutineScope): PagingSource<Int, Models.Results>(),
-    KoinComponent {
+class ListDataSource(coroutineScope: CoroutineScope): PagingSource<Int, Models.Results>(), KoinComponent {
 
-    private val repository: ListRepository by inject{ parametersOf(coroutineScope) }
+    private val repository: ListRepository by inject { parametersOf(coroutineScope) }
 
-    var state: MutableLiveData<LoadingState> = MutableLiveData()
+    private var state: MutableLiveData<LoadingState> = MutableLiveData()
 
     private fun updateState(loadingState: LoadingState) {
         state.postValue(loadingState)

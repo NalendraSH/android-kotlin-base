@@ -7,7 +7,7 @@ import com.androidkotlinbase.networks.repositories.GalleryRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class FragmentGalleryViewModel : ViewModel(), KoinComponent{
+class FragmentGalleryViewModel : ViewModel(), KoinComponent {
 
     private val networkRepository: GalleryRepository by inject()
     private val localRepository: com.androidkotlinbase.local.repositories.GalleryRepository by inject()

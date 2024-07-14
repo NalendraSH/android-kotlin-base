@@ -37,19 +37,26 @@ class GalleryFragment : Fragment() {
     }
 
     private fun observeLiveData() {
-        viewModel.isLoading.observe(viewLifecycleOwner, {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
             binding.swipeBleach.isRefreshing = it
-        })
-        viewModel.liveDataList.observe(viewLifecycleOwner, {
+        }
+        viewModel.liveDataList.observe(viewLifecycleOwner) {
             adapter.submitList(it.data)
             for (result in it.data) {
-                val res = Models.Content(result.mal_id, result.url, result.images.webp.image_url, result.title, result.synopsis, result.score)
+                val res = Models.Content(
+                    result.mal_id,
+                    result.url,
+                    result.images.webp.image_url,
+                    result.title,
+                    result.synopsis,
+                    result.score
+                )
                 viewModel.submitLocalBleach(res)
             }
-        })
-        viewModel.bleachList.observe(viewLifecycleOwner, {
+        }
+        viewModel.bleachList.observe(viewLifecycleOwner) {
             Log.d("bleach_list", it.toString())
-        })
+        }
     }
 
     private fun setupRecyclerView() {

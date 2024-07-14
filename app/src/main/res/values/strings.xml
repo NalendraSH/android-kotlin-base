@@ -3,4 +3,6 @@
 
     <string name="listview_label">Naruto</string>
     <string name="galleryview_label">Conan</string>
+
+    <string name="score_data">Score: %1$s</string>
 </resources>

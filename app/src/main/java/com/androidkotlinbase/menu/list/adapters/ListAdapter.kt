@@ -54,7 +54,7 @@ class ListAdapter : PagingDataAdapter<Models.Results, RecyclerView.ViewHolder>(A
         fun bindData(narutoModel: Models.Results) {
             binding.ivItemNaruto.setImageUrl(narutoModel.images.webp.image_url)
             binding.tvItemNarutoTitle.text = narutoModel.title
-            binding.tvItemNarutoScore.text = "Score: ${narutoModel.score ?: 0.0}"
+            binding.tvItemNarutoScore.text = itemView.context.getString(R.string.score_data, (narutoModel.score ?: 0.0).toString())
             binding.tvItemNarutoDesc.text = narutoModel.synopsis
         }
     }

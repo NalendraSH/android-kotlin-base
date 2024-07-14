@@ -1,7 +1,6 @@
 package com.androidkotlinbase.utils
 
 import android.content.Context
-import com.androidkotlinbase.R
 
 object AppHelper {
 

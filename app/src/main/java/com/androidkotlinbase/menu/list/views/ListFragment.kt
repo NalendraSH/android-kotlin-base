@@ -39,11 +39,11 @@ class ListFragment : Fragment() {
     }
 
     private fun observeLiveData() {
-        viewModel.narutoList.observe(viewLifecycleOwner, {
+        viewModel.narutoList.observe(viewLifecycleOwner) {
             lifecycleScope.launch {
                 adapter.submitData(it)
             }
-        })
+        }
     }
 
     private fun setupRecyclerView() {

@@ -8,7 +8,7 @@ constraintLayout = "2.1.1"
 material = "1.9.0"
 navigation = "2.6.0"
 recyclerView = "1.2.1"
-koin = "2.2.3"
+koin = "3.1.2"
 room = "2.5.2"
 coroutines = "1.5.1"
 okhttp3BOM = "4.9.3"
@@ -32,8 +32,7 @@ androidx-navigation-ktx = { module = "androidx.navigation:navigation-fragment-kt
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerView" }
 koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-scope = { module = "io.insert-koin:koin-android-scope", version.ref = "koin" }
-koin-viewmodel = { module = "io.insert-koin:koin-androidx-viewmodel", version.ref = "koin" }
+koin-compat = { module = "io.insert-koin:koin-android-compat", version.ref = "koin" }
 room-kapt = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }

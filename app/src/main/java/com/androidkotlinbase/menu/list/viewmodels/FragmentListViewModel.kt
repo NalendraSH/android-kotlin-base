@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import androidx.paging.liveData
 import com.androidkotlinbase.menu.list.models.Models
 import com.androidkotlinbase.menu.list.paging.ListDataSource
@@ -19,6 +20,6 @@ class FragmentListViewModel : ViewModel(){
             pagingSourceFactory = { ListDataSource(viewModelScope) },
             config = PagingConfig(20)
         )
-        narutoList = pager.liveData
+        narutoList = pager.liveData.cachedIn(viewModelScope)
     }
 }

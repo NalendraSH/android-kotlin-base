@@ -9,6 +9,7 @@ plugins {
 android {
     namespace = "com.androidkotlinbase"
     compileSdk = libs.versions.compileSdk.get().toInt()
+
     defaultConfig {
         applicationId = "com.androidkotlinbase"
         minSdk = libs.versions.minSdk.get().toInt()
@@ -67,6 +68,8 @@ dependencies {
     implementation(libs.androidx.paging.runtime.ktx)
     implementation(libs.androidx.swipe.refresh)
     implementation(libs.material)
+    implementation(libs.androidx.navigation.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     ksp(libs.room.kapt)
     implementation(libs.androidx.room.runtime)

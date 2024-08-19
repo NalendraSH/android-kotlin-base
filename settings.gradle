@@ -30,6 +30,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AndroidKotlinBase"
+rootProject.name = "Android-Kotlin-Base"
 
 include(":app")

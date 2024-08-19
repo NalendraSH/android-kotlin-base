@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidKotlinBase</string>
+    <string name="app_name">Naruto Conan Info</string>
 
     <string name="listview_label">Naruto</string>
     <string name="galleryview_label">Conan</string>
